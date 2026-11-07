@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>সপ্তম শ্রেণির গণিত MCQ পরীক্ষা</title>
+<style>
+:root{--blue:#2457c5;--bg:#f3f6fc;--ink:#172033;--muted:#64748b;--line:#dce3ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,"Noto Sans Bengali",sans-serif}
+.wrap{max-width:850px;margin:24px auto;padding:0 14px}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:22px;margin:14px 0;box-shadow:0 5px 18px #1720330a}
+h1{font-size:clamp(23px,5vw,32px);margin:0 0 8px}.sub{color:var(--muted);margin:0 0 18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{font-weight:600;font-size:14px}input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin-top:6px;font:inherit}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.pill{background:#edf2ff;color:#234eb1;padding:8px 12px;border-radius:99px;font-weight:700}
+button{border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:700;cursor:pointer;background:var(--blue);color:white}button.secondary{background:#e9eef8;color:#23324c}button:disabled{opacity:.5;cursor:not-allowed}
+.q{padding:18px 0;border-bottom:1px solid var(--line)}.q:last-child{border:0}.q h3{font-size:17px;margin:0 0 12px}.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{display:flex;gap:9px;align-items:flex-start;padding:10px;border:1px solid var(--line);border-radius:9px;cursor:pointer;font-weight:400}.opt:has(input:checked){border-color:var(--blue);background:#f0f4ff}
+.note{font-size:13px;color:var(--muted)}.hidden{display:none}.result{text-align:center}.score{font-size:46px;font-weight:800;color:var(--blue)}.review-item{text-align:left;padding:12px;border:1px solid var(--line);border-radius:10px;margin:10px 0}.correct{border-left:5px solid #16834a}.wrong{border-left:5px solid #c43b3b}
+@media(max-width:560px){.grid,.opts{grid-template-columns:1fr}.card{padding:16px}}
+@media print{body{background:white}.no-print{display:none!important}.card{box-shadow:none}}
+</style>
+</head>
+<body><div class="wrap">
+<section class="card" id="intro">
+<h1>📘 সপ্তম শ্রেণির গণিত — MCQ পরীক্ষা</h1>
+<p class="sub">NCTB-ভিত্তিক অনুশীলনী • ২৩টি প্রশ্ন • পূর্ণমান ২৩ • প্রতিটি ১ নম্বর</p>
+<div class="grid">
+<label>শিক্ষার্থীর নাম<input id="student" type="text" placeholder="তোমার নাম লিখো"></label>
+<label>রোল নম্বর<input id="roll" type="text" placeholder="রোল নম্বর"></label>
+</div>
+<p class="note">সময়: ৩০ মিনিট। পরীক্ষা শুরু করলে টাইমার চালু হবে। জমা দেওয়ার পর সঙ্গে সঙ্গে ফলাফল দেখা যাবে।</p>
+<button id="start">পরীক্ষা শুরু করো</button>
+</section>
+<section class="card hidden" id="exam">
+<div class="top"><strong>সপ্তম শ্রেণির গণিত MCQ</strong><span class="pill" id="timer">৩০:০০</span><span class="pill" id="progress">উত্তর: ০/২৩</span></div>
+<form id="quiz"><div id="questions"></div>
+<div class="top no-print"><span class="note">সব প্রশ্নের উত্তর দিয়ে পরীক্ষা জমা দাও।</span><button type="submit">পরীক্ষা জমা দাও</button></div></form>
+</section>
+<section class="card hidden result" id="result">
+<h2>পরীক্ষার ফলাফল</h2><p id="studentResult"></p><div class="score" id="score"></div><p id="remark"></p>
+<div class="top no-print" style="justify-content:center;margin:18px 0"><button onclick="window.print()" class="secondary">ফলাফল প্রিন্ট / PDF</button><button id="again">আবার পরীক্ষা দাও</button></div>
+<h3>উত্তর পর্যালোচনা</h3><div id="review"></div>
+</section>
+<footer class="note" style="text-align:center;padding:12px">অনুশীলনের জন্য তৈরি অনলাইন MCQ পরীক্ষা</footer>
+</div>
+<script>
+const data = [
+["একটি আয়তক্ষেত্রের দৈর্ঘ্য ১২ মিটার এবং প্রস্থ ৮ মিটার হলে ক্ষেত্রফল কত?",["৪০ বর্গমিটার","৯৬ বর্গমিটার","২০ বর্গমিটার","১০০ বর্গমিটার"],1,"ক্ষেত্রফল = দৈর্ঘ্য × প্রস্থ = ১২ × ৮ = ৯৬ বর্গমিটার।"],
+["একটি বর্গক্ষেত্রের এক বাহুর দৈর্ঘ্য ৯ সেমি হলে পরিসীমা কত?",["১৮ সেমি","২৭ সেমি","৩৬ সেমি","৮১ সেমি"],2,"পরিসীমা = ৪ × বাহু = ৪ × ৯ = ৩৬ সেমি।"],
+["২.৫ কিলোমিটার সমান কত মিটার?",["২৫০ মিটার","২,৫০০ মিটার","২৫,০০০ মিটার","২০৫ মিটার"],1,"১ কিলোমিটার = ১,০০০ মিটার; তাই ২.৫ কিমি = ২,৫০০ মিটার।"],
+["একটি আয়তক্ষেত্রের ক্ষেত্রফল ১৫০ বর্গমিটার এবং দৈর্ঘ্য ১৫ মিটার হলে প্রস্থ কত?",["৫ মিটার","১০ মিটার","১৫ মিটার","২০ মিটার"],1,"প্রস্থ = ক্ষেত্রফল ÷ দৈর্ঘ্য = ১৫০ ÷ ১৫ = ১০ মিটার।"],
+["একটি বর্গক্ষেত্রের পরিসীমা ৬৪ সেমি হলে ক্ষেত্রফল কত?",["১২৮ বর্গসেমি","২৫৬ বর্গসেমি","৬৪ বর্গসেমি","১৬ বর্গসেমি"],1,"বাহু = ৬৪ ÷ ৪ = ১৬ সেমি; ক্ষেত্রফল = ১৬² = ২৫৬ বর্গসেমি।"],
+["৪ : ১২ অনুপাতটির সরল রূপ কোনটি?",["১ : ২","১ : ৩","২ : ৩","৩ : ১"],1,"৪ ও ১২-কে ৪ দিয়ে ভাগ করলে ১ : ৩।"],
+["একটি পণ্যের ক্রয়মূল্য ৫০০ টাকা এবং বিক্রয়মূল্য ৬০০ টাকা হলে লাভ কত?",["৫০ টাকা","১০০ টাকা","১৫০ টাকা","২০০ টাকা"],1,"লাভ = বিক্রয়মূল্য − ক্রয়মূল্য = ৬০০ − ৫০০ = ১০০ টাকা।"],
+["৮০০ টাকার একটি পণ্য ১০% ক্ষতিতে বিক্রি করলে বিক্রয়মূল্য কত?",["৭০০ টাকা","৭২০ টাকা","৭৫০ টাকা","৭৮০ টাকা"],1,"ক্ষতি = ৮০০-এর ১০% = ৮০ টাকা; বিক্রয়মূল্য = ৮০০ − ৮০ = ৭২০ টাকা।"],
+["একটি পণ্যের ক্রয়মূল্য ১,০০০ টাকা এবং বিক্রয়মূল্য ১,২০০ টাকা হলে শতকরা লাভ কত?",["১০%","১৫%","২০%","২৫%"],2,"লাভ ২০০ টাকা; লাভের হার = (২০০ ÷ ১,০০০) × ১০০ = ২০%।"],
+["৫টি কলমের দাম ১০০ টাকা হলে একই দরে ৮টি কলমের দাম কত?",["১২০ টাকা","১৪০ টাকা","১৬০ টাকা","১৮০ টাকা"],2,"১টি কলমের দাম ২০ টাকা; ৮টির দাম ১৬০ টাকা।"],
+["একটি সংখ্যার সঙ্গে ১২ যোগ করলে ৩০ হয়। সংখ্যাটি কত?",["১২","১৫","১৮","২০"],2,"x + ১২ = ৩০, তাই x = ১৮।"],
+["একটি সংখ্যার দ্বিগুণের সঙ্গে ৫ যোগ করলে ২৫ হয়। সংখ্যাটি কত?",["৫","১০","১৫","২০"],1,"২x + ৫ = ২৫; ২x = ২০; x = ১০।"],
+["পিতা ও পুত্রের বয়সের সমষ্টি ৫০ বছর। পিতার বয়স পুত্রের বয়সের ৪ গুণ হলে পুত্রের বয়স কত?",["৮ বছর","১০ বছর","১২ বছর","১৫ বছর"],1,"পুত্রের বয়স x হলে ৪x + x = ৫০; x = ১০ বছর।"],
+["সর্বসম ত্রিভুজের অনুরূপ বাহুগুলো কেমন হয়?",["সমান","অসমান","দ্বিগুণ","অর্ধেক"],0,"সর্বসম ত্রিভুজের অনুরূপ বাহু ও অনুরূপ কোণ সমান।"],
+["দুটি ত্রিভুজের তিন জোড়া অনুরূপ বাহু সমান হলে কোন শর্তে ত্রিভুজ দুটি সর্বসম হয়?",["বাহু-বাহু-বাহু","কোণ-কোণ-কোণ","শুধু একটি বাহু সমান","শুধু একটি কোণ সমান"],0,"তিন জোড়া অনুরূপ বাহু সমান হলে SSS বা বাহু-বাহু-বাহু শর্ত প্রযোজ্য।"],
+["দুটি সদৃশ ত্রিভুজের অনুরূপ কোণগুলো কেমন হয়?",["সমান","সব সময় অসমান","দ্বিগুণ","অর্ধেক"],0,"সদৃশ ত্রিভুজের অনুরূপ কোণগুলো সমান হয়।"],
+["দুটি সদৃশ ত্রিভুজের অনুরূপ বাহুর অনুপাত ২ : ৩। ছোট ত্রিভুজের একটি বাহু ৬ সেমি হলে বড় ত্রিভুজের অনুরূপ বাহু কত?",["৪ সেমি","৬ সেমি","৯ সেমি","১২ সেমি"],2,"বড় বাহু = ৬ × ৩/২ = ৯ সেমি।"],
+["দুটি ত্রিভুজের দুটি অনুরূপ বাহু ও তাদের অন্তর্ভুক্ত কোণ সমান হলে কোন সর্বসমতার শর্ত প্রযোজ্য?",["বাহু-বাহু-বাহু","বাহু-কোণ-বাহু","কোণ-কোণ-কোণ","শুধু কোণ সমান"],1,"দুই বাহু ও অন্তর্ভুক্ত কোণ সমান হলে SAS বা বাহু-কোণ-বাহু শর্ত।"],
+["৪, ৬, ৮, ১০ সংখ্যাগুলোর গড় কত?",["৬","৭","৮","৯"],1,"গড় = (৪ + ৬ + ৮ + ১০) ÷ ৪ = ৭।"],
+["৩, ৫, ৭, ৯, ১১ উপাত্তগুলোর মধ্যক কত?",["৫","৭","৯","১১"],1,"সাজানো ৫টি উপাত্তের মাঝের মান ৭।"],
+["২, ৩, ৩, ৪, ৫ উপাত্তগুলোর প্রচুরক কত?",["২","৩","৪","৫"],1,"যে মানটি সবচেয়ে বেশি বার আসে তা প্রচুরক; এখানে ৩।"],
+["১০, ১৫, ২০, ২৫, ৩০ উপাত্তগুলোর পরিসর কত?",["১০","১৫","২০","৩০"],2,"পরিসর = বৃহত্তম − ক্ষুদ্রতম = ৩০ − ১০ = ২০।"],
+["৫ জন শিক্ষার্থীর প্রাপ্ত নম্বর ৬০, ৭০, ৮০, ৯০ ও ১০০। তাদের গড় নম্বর কত?",["৭০","৭৫","৮০","৮৫"],2,"গড় = (৬০ + ৭০ + ৮০ + ৯০ + ১০০) ÷ ৫ = ৮০।"]
+];
+let remaining=1800, interval=null, submitted=false;
+const bn=n=>String(n).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
+const $=id=>document.getElementById(id);
+function render(){ $("questions").innerHTML=data.map((q,i)=>`<div class="q"><h3>${bn(i+1)}। ${q[0]}</h3><div class="opts">${q[1].map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"> <span>${"কখগঘ"[j]}) ${o}</span></label>`).join("")}</div></div>`).join("");document.querySelectorAll('input[type=radio]').forEach(x=>x.addEventListener('change',progress));}
+function progress(){let n=data.filter((q,i)=>document.querySelector(`input[name=q${i}]:checked`)).length;$("progress").textContent=`উত্তর: ${bn(n)}/${bn(data.length)}`;}
+function tick(){let m=Math.floor(remaining/60),s=remaining%60;$("timer").textContent=`${bn(m).padStart(2,"০")}:${bn(s).padStart(2,"০")}`;if(remaining<=0){clearInterval(interval);finish();}remaining--;}
+$("start").onclick=()=>{if(!$("student").value.trim()){alert("শিক্ষার্থীর নাম লিখো।");return;} $("intro").classList.add("hidden");$("exam").classList.remove("hidden");render();tick();interval=setInterval(tick,1000);window.scrollTo(0,0);};
+$("quiz").onsubmit=e=>{e.preventDefault();if(confirm("তুমি কি পরীক্ষা জমা দিতে চাও?"))finish();};
+function finish(){if(submitted)return;submitted=true;clearInterval(interval);let score=0;data.forEach((q,i)=>{let a=document.querySelector(`input[name=q${i}]:checked`);if(a&&Number(a.value)===q[2])score++;});$("exam").classList.add("hidden");$("result").classList.remove("hidden");$("studentResult").textContent=`নাম: ${$("student").value} | রোল: ${$("roll").value||"—"}`;$("score").textContent=`${bn(score)} / ${bn(data.length)}`;let pct=score/data.length*100;$("remark").textContent=pct>=80?"চমৎকার!":pct>=60?"ভালো হয়েছে। আরও অনুশীলন করো।":pct>=40?"আরও পড়াশোনা ও অনুশীলন প্রয়োজন।":"মন খারাপ কোরো না—আবার চেষ্টা করো।";$("review").innerHTML=data.map((q,i)=>{let a=document.querySelector(`input[name=q${i}]:checked`),ok=a&&Number(a.value)===q[2];return `<div class="review-item ${ok?"correct":"wrong"}"><b>${bn(i+1)}। ${q[0]}</b><p>তোমার উত্তর: ${a?q[1][Number(a.value)]:"উত্তর দাওনি"}</p><p><b>সঠিক উত্তর: ${"কখগঘ"[q[2]]}) ${q[1][q[2]]}</b></p><p class="note">${q[3]}</p></div>`;}).join("");window.scrollTo(0,0);}
+$("again").onclick=()=>location.reload();
+</script></body></html>
